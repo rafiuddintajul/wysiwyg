@@ -1,0 +1,8 @@
+.content-editable::-webkit-scrollbar {
+  display: none;
+}
+
+.content-editable {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

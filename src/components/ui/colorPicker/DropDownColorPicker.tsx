@@ -1,6 +1,6 @@
 import ColorPicker from './ColorPicker';
-import {Dropdown} from './Dropdown';
-import { Button } from '../ui';
+import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent} from '../dropdown-menu';
+import { Button } from '../button';
 import { Palette } from 'lucide-react';
 
 type Props = {
@@ -23,8 +23,13 @@ export function DropdownColorPicker({
   ...rest
 }: Props) {
   return (
-    <Dropdown display={<Button type="button" className="h-7 p-2"><Palette size={15} />Font</Button>}>
-      <ColorPicker color={color} onChange={onChange} />
-    </Dropdown>
+    <DropdownMenu>
+      <DropdownMenuTrigger><div className="flex text-sm mr-1 mb-1 p-1 rounded-md opacity-75 hover:bg-accent hover:opacity-100">
+        <Palette size={15} className="my-auto mr-1" />Font</div>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <ColorPicker color={color} onChange={onChange} />
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

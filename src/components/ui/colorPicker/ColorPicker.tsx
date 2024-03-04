@@ -13,7 +13,8 @@ import './ColorPicker.css';
 import {useEffect, useMemo, useRef, useState} from 'react';
 import * as React from 'react';
 
-import TextInput from './TextInput';
+// import TextInput from './TextInput';
+import { Input } from '../input';
 
 let skipAddingToHistoryStack = false;
 
@@ -66,7 +67,8 @@ export default function ColorPicker({
     [selfColor.hsv],
   );
 
-  const onSetHex = (hex: string) => {
+  const onSetHex = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const hex = e.target.value
     setInputColor(hex);
     if (/^#[0-9A-Fa-f]{6}$/i.test(hex)) {
       const newColor = transformColor('hex', hex);
@@ -113,7 +115,7 @@ export default function ColorPicker({
       className="color-picker-wrapper"
       style={{width: WIDTH}}
       ref={innerDivRef}>
-      <TextInput label="Hex" onChange={onSetHex} value={inputColor} />
+      <Input label="Hex" onChange={onSetHex} value={inputColor} />
       <div className="color-picker-basic-color">
         {basicColors.map((basicColor) => (
           <button
